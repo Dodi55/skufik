@@ -5,10 +5,10 @@ function App() {
   return (
     <>
       <button>Тема</button>
-      <button>Later..</button>
+      <button></button>
     </>
   )
-  
+
 }
 
 export default App

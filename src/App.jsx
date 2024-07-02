@@ -1,28 +1,29 @@
-import { useState } from 'react'
-import { Header } from './header/Header'
+import {Routes, Route, Link} from 'react-router-dom'
+import { About } from '../spaSrc/About'
+import { Blog } from '../spaSrc/Blog'
+import { HomePage } from '../spaSrc/Homepage'
+import { SendHome } from '../spaSrc/SendHome'
 import './App.sass'
-import { chengeTheme } from './chengeTheme';
 
 function App() {
-  const [theme, setTheme] = useState('white');
-  const [themeFon, setThemeFon] = useState('black');
-
-  console.log(setTheme);
-  console.log('ban');
   return (
-    <>
-    <div className='container'>
-        <button onClick={() => chengeTheme(setTheme())}>Тема</button>
-        <div className='main' style={{backgroundColor: themeFon}}>
-          <Header theme={theme}/>
-          <Header theme={theme}/>
-          <Header theme={theme}/>
-          <Header theme={theme}/>
-        </div>
-      </div>
+    <> 
+      <header>
+        <Link to="/">Home</Link>
+        <Link to="/blog">Blog</Link>
+        <Link to="/about">About</Link>
+      </header>
+
+      <Routes>
+        <Route path='/' element={<HomePage />}/>
+        <Route path='/blog' element={<Blog />}/>
+        <Route path='/about' element={<About />}/>
+        <Route path='*' element={<SendHome />}/>
+      </Routes>
+
+      <button>5</button>
     </>
   )
-
 }
 
 export default App

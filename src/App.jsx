@@ -9,7 +9,7 @@ function App() {
   return (
     <> 
       <header>
-        <Link to="/">Home1</Link>
+        <Link to="/">Home1iuuiiu</Link>
         <Link to="/blog">Blog</Link>
         <Link to="/about">About</Link>
       </header>

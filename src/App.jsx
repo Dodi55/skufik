@@ -1,29 +1,82 @@
-import {Routes, Route, Link} from 'react-router-dom'
-import { About } from '../spaSrc/About'
-import { Blog } from '../spaSrc/Blog'
-import { HomePage } from '../spaSrc/Homepage'
-import { SendHome } from '../spaSrc/SendHome'
 import './App.sass'
+import { Header } from './Header/Header'
+import { createContext, useContext, useState } from 'react';
+import { Menu } from './Menu/Menu';
+import Footer from './Footer/Footer';
 
-function App() {
-  return (
-    <> 
-      <header>
-        <Link to="/">Home</Link>
-        <Link to="/blog">Blog</Link>
-        <Link to="/about">About</Link>
-      </header>
 
-      <Routes>
-        <Route path='/' element={<HomePage />}/>
-        <Route path='/blog' element={<Blog />}/>
-        <Route path='/about' element={<About />}/>
-        <Route path='*' element={<SendHome />}/>
-      </Routes>
+const MyContext = createContext();
 
-      <button>5</button>
-    </>
-  )
+export default function App() {
+	const [data, setData] = useState(localStorage.getItem('shopBasket') ? JSON.parse(localStorage.getItem('shopBasket')): []);
+	const [activeBasket, setActiveBasket] = useState(false);
+	const [heart, setHeart] = useState(localStorage.getItem('heartBasket') ? JSON.parse(localStorage.getItem('heartBasket')): []);
+	const [catalog, setCatalog] = useState(false)
+
+	const setValue = (value, delet) => {
+		if (!value) {
+			setActiveBasket(!activeBasket)
+			return setData([])
+		}
+		if (delet) {
+			return setData([...value])
+		}
+
+        setData(prev => ([
+			...prev,
+			value
+		]))
+    }
+
+	function deleteBasket(id) {
+        const indexDelete = data.findIndex(el => el.id == id);
+        data.splice(indexDelete,1)
+        setValue(data,true)
+        if (!data.length && activeBasket) {
+            setActiveBasket(!activeBasket)
+        }
+    }  
+
+
+
+
+	const addHeart = (value, delet) => {
+		if (delet) {
+			return setHeart([...value])
+		}
+
+        setHeart(prev => ([
+			...prev,
+			value
+		]))
+    } 
+
+
+	function deleteHeart(id) {
+        const indexDelete = heart.findIndex(el => el.id == id);
+        heart.splice(indexDelete,1)
+        addHeart(heart,true)
+    }
+
+
+	localStorage.setItem('heartBasket',JSON.stringify(heart))
+	localStorage.setItem('shopBasket',JSON.stringify(data))
+
+
+
+
+
+  	return (
+    	<> 
+			<MyContext.Provider  value={{catalog, setCatalog, data, setValue, activeBasket, setActiveBasket, deleteBasket, heart, setHeart, addHeart, deleteHeart}}>
+				{catalog && <div className='catalor-back' onClick={() => setCatalog(!catalog)}></div>}
+				<Header />
+				<Menu />
+				<Footer />
+			</MyContext.Provider>
+		</>
+  	)
 }
 
-export default App
+export const useData2 = MyContext
+export const useData = () => useContext(MyContext)

@@ -1,0 +1,188 @@
+.header-main
+    padding: 15px 0
+
+.header-main-flex
+    display: flex
+    align-items: center
+    justify-content: space-between
+    position: relative
+
+
+.header-main-logo
+    margin-right: 30px
+
+.header-main-catalog
+    position: relative 
+    z-index: 999       
+    button
+        background-color: #000000
+        color: #fff
+        padding: 15px 35px 15px 45px
+        border: none
+        border-radius: 6px
+        transition: 0.2s
+        font-size: 16px
+        cursor: pointer
+        &:hover
+            background-color: #222222
+        
+
+.header-main-catalog-icon
+    color: #fff
+    font-size: 26px
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    margin-left: 10px
+
+.header-main-catalog-icon2
+    color: #fff
+    font-size: 16px
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    right: 10px
+
+
+
+
+
+
+
+.header-main-search
+    margin: 0 30px
+    position: relative
+    input
+        width: 550px
+        height: 50px
+        border-radius: 6px
+        padding: 0 20px
+        font-size: 16px
+        border: none
+        outline: none
+        background-color: #d7d7d7
+
+.header-main-search-icon
+    position: absolute
+    font-size: 24px
+    font-weight: 600
+    top: 50%
+    transform: translateY(-50%)
+    right: 0
+    margin-right: 20px
+
+
+
+.header-main-info
+    display: flex
+
+.header-main-info-phone
+    display: flex
+    align-items: center
+    a
+        color: #000
+        font-size: 18px
+        margin-left: 5px
+
+
+.header-main-info-icons
+    margin-left: 20px
+    position: relative
+
+
+.header-main-info-icon
+    font-size: 24px
+    color: #4d4d4d
+    margin: 0 10px
+    position: relative
+
+.shopBasket-count
+    position: absolute
+    background-color: #000
+    top: -20px
+    right: 0
+    text-align: center
+    font-size: 10px
+    padding: 0 5px
+
+
+.header-main-info-basket
+    position: absolute
+    width: 420px
+    max-height: 315px
+    overflow: auto
+    background-color: #fff
+    border: 2px solid #000000
+    border-radius: 6px
+    right: 0
+    //display: none
+
+.basket-hidden
+    display: none
+
+.hidden
+    display: none
+
+
+.header-main-info-basket-item
+    height: 70px
+    padding: 5px 15px 5px 10px
+    display: flex
+    align-items: center
+    justify-content: space-between
+    button
+        cursor: pointer
+        background: none
+        border: none
+        &:hover
+            .delete-basket
+                color: tomato
+
+.delete-basket
+    font-size: 26px
+    transition: 0.2s
+
+
+.header-main-info-basket-price-block
+    display: flex
+    align-items: center
+    justify-content: space-between
+    background-color: #1a1a1a
+    padding: 10px 15px 10px 10px
+    margin-top: 15px
+    box-shadow: 0 0 20px 0 #bdbdbd
+  
+.header-main-info-basket-price
+    color: #fff
+    font-size: 20px
+
+.header-main-info-basket-price-reset
+    background: none
+    color: #fff
+    border: none 
+    cursor: pointer
+
+@media screen and (max-width: 1459.9px)
+    .container
+        max-width: 1200px
+        margin: 0 auto
+    .header-main-search
+        margin: 0 30px
+        position: relative
+        input
+            width: 400px
+            height: 50px
+            border-radius: 6px
+            padding: 0 20px
+            font-size: 16px
+            border: none
+            outline: none
+            background-color: #d7d7d7
+    .header-main-search-icon
+        position: absolute
+        font-size: 24px
+        font-weight: 600
+        top: 50%
+        transform: translateY(-50%)
+        right: 0
+        margin-right: 20px
